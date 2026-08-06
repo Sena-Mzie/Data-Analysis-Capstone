@@ -64,7 +64,7 @@ SELECT
 FROM Customers;
 
 /* =============================================
-    Activity 4: Basic Da Retrieval
+    Activity 4: Basic Data Retrieval
    =============================================  */
 
 SELECT 
