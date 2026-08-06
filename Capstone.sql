@@ -3,8 +3,7 @@
    =============================================  */
 
 /* =============================================
-         Activity 1: Create Database/Table
-   =============================================  */
+         Activity 1: Create Database/Tabl   =============================================  */
 
 CREATE TABLE Customers (
     CustomerId VARCHAR(10) PRIMARY KEY NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE Orders (
 );
 
 /* =============================================
-    Activity 2: Populate Tables
+         Activity 2: Populate Tables
    =============================================  */
 INSERT INTO Customers 
 (CustomerId, FirstName, LastName, City, Phone, Email) 
@@ -53,7 +52,7 @@ VALUES
 ('ORD010', 'C005', '2026-12-01 15:50:00', 'C', 90.00);
 
 /* =============================================
-    Activity 3: Basic Data Retrieval
+        Activity 3: Basic Data Retrieval
    =============================================  */
 SELECT 
     CustomerId AS [Customer ID],
@@ -64,7 +63,7 @@ SELECT
 FROM Customers;
 
 /* =============================================
-    Activity 4: Basic Data Retrieval
+        Activity 4: Basic Data Retrieval
    =============================================  */
 
 SELECT 
@@ -82,3 +81,42 @@ SELECT
     TotalAmount AS [Total Amount]
 FROM Orders
 WHERE OrderDate BETWEEN '2026-01-01 00:00:00' AND '2026-03-31 23:59:59';
+
+/* =============================================
+             Activity 5: SQL Joins
+   =============================================  */
+SELECT 
+    CONCAT(c.FirstName, ' ', c.LastName) AS [Customer Name],
+    o.OrderId AS [Order ID],
+    o.OrderDate AS [Order Date],
+    o.TotalAmount AS [Total Amount]
+FROM Customers c
+INNER JOIN Orders o 
+    ON c.CustomerId = o.CustomerId;
+
+SELECT 
+    CONCAT(c.FirstName, ' ', c.LastName) AS [Customer Name],
+    o.OrderId AS [Order ID],
+    o.OrderDate AS [Order Date],
+    o.TotalAmount AS [Total Amount]
+FROM Customers c
+LEFT JOIN Orders o 
+    ON c.CustomerId = o.CustomerId;
+
+SELECT 
+    CONCAT(c.FirstName, ' ', c.LastName) AS [Customer Name],
+    o.OrderId AS [Order ID],
+    o.OrderDate AS [Order Date],
+    o.TotalAmount AS [Total Amount]
+FROM Customers c
+RIGHT JOIN Orders o 
+    ON c.CustomerId = o.CustomerId;
+
+SELECT 
+    CONCAT(c.FirstName, ' ', c.LastName) AS [Customer Name],
+    o.OrderId AS [Order ID],
+    o.OrderDate AS [Order Date],
+    o.TotalAmount AS [Total Amount]
+FROM Customers c
+FULL OUTER JOIN Orders o 
+    ON c.CustomerId = o.CustomerId;
